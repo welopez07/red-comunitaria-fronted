@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Lista de Proyectos</h2>
+  <button routerLink="/registro-proyecto" class="btn btn-primary mb-3">Registrar Nuevo Proyecto</button>
+  
+  <table class="table table-striped table-success">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th>Fecha</th>
+              <th>Inversión Mínima</th>
+              <th>Detalles de Inversión</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let proyecto of proyectos">
+              <td>{{ proyecto.name }}</td>
+              <td>{{ proyecto.category }}</td>
+              <td>{{ proyecto.date | date }}</td>
+              <td>${{ proyecto.minInversion }}</td>
+              <td>{{ proyecto.detailsInversion }}</td>
+              <td>{{ proyecto.estado }}</td>
+              <td>
+                  <button [routerLink]="['/solicitud-inversion', proyecto.projectId]" class="btn btn-primary">Invertir</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+
+
+<!-- <div class="container">
+    <h2>Lista de Proyectos</h2>
+    <button routerLink="/registro-proyecto" class="btn btn-primary">Registrar Nuevo Proyecto</button>
+    <ul>
+      <li *ngFor="let proyecto of proyectos">
+        <h3>{{ proyecto.name }}</h3>
+        <p><strong>Categoría:</strong> {{ proyecto.category }}</p>
+        <p><strong>Fecha:</strong> {{ proyecto.date | date }}</p>
+        <p><strong>Inversión Mínima:</strong> ${{ proyecto.minInversion }}</p>
+        <p><strong>Detalles de Inversión:</strong> {{ proyecto.detailsInversion }}</p>
+        <p><strong>Estado:</strong> {{ proyecto.estado }}</p>
+        <button [routerLink]="['/detalle-proyecto', proyecto.projectId]" class="btn btn-info">Invertir</button>
+      </li>
+    </ul>
+  </div> -->

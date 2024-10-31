@@ -1,0 +1,41 @@
+<div class="header-section">
+    <h1>Comunidad de Emprendimiento</h1>
+    <p>Un espacio diseñado para promover el emprendimiento y conectar emprendedores con potenciales inversionistas. Aquí encontrarás proyectos innovadores y oportunidades para hacer crecer tus ideas y capital.</p>
+  </div>
+  
+  <div class="project-carousel">
+    <h2>Proyectos Destacados</h2>
+    <div class="carousel-container">
+      <div *ngFor="let proyecto of proyectosDestacados" (click)="irASolicitudInversion(proyecto)">
+        <h3>{{ proyecto.name }}</h3>
+        <p>{{ proyecto.detailsInversion }}</p>
+        <p>Categoría: {{ proyecto.category }}</p>
+        <p>Fecha de inicio: {{ proyecto.date | date: 'dd/MM/yyyy' }}</p>
+        <p>Estado: {{ proyecto.estado }}</p>
+        <button (click)="irASolicitudInversion(proyecto)">Invertir</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="news-section">
+    <h2>Noticias de Emprendimiento</h2>
+    <div *ngFor="let noticia of noticiasEmprendimiento">
+      <h3>{{ noticia.titulo }}</h3>
+      <p>{{ noticia.descripcion }}</p>
+      <span>{{ noticia.fecha }}</span>
+      <a [routerLink]="['/noticia', noticia.id]">Leer más</a>
+    </div>
+  </div>
+  
+  <div class="cta-section">
+    <div>
+      <h3>¿Eres Inversionista?</h3>
+      <p>Explora proyectos innovadores listos para recibir inversión.</p>
+      <button (click)="irAProyectos()">Ver Proyectos</button>
+    </div>
+    <div>
+      <h3>¿Eres Emprendedor?</h3>
+      <p>Publica tu proyecto y encuentra potenciales inversionistas.</p>
+      <button (click)="irARegistroProyecto()">Registrar Proyecto</button>
+    </div>
+  </div>

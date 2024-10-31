@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Registro de Nuevo Proyecto</h2>
+    <form (ngSubmit)="registrarProyecto()">
+      <div class="form-group">
+        <label for="name">Nombre del Proyecto</label>
+        <input type="text" id="name" [(ngModel)]="proyecto.name" name="name" required class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="category">Categoría</label>
+        <input type="text" id="category" [(ngModel)]="proyecto.category" name="category" required class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="minInversion">Inversión Mínima</label>
+        <input type="number" id="minInversion" [(ngModel)]="proyecto.minInversion" name="minInversion" required class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="detailsInversion">Detalles de la Inversión</label>
+        <textarea id="detailsInversion" [(ngModel)]="proyecto.detailsInversion" name="detailsInversion" required class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Registrar Proyecto</button>
+    </form>
+  </div>

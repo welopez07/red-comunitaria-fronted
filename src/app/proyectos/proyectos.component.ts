@@ -6,8 +6,6 @@ import { Proyecto } from '../models/proyecto.model';
 import { ProyectoService } from '../../servicios/proyecto.service';
 
 
-
-
 @Component({
   selector: 'app-proyectos',
   standalone: true,

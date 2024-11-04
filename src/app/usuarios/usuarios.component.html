@@ -6,9 +6,8 @@
       <thead>
           <tr>
               <th>Nombre</th>
+              <th>Apellido</th>
               <th>Email</th>
-              <th>Dirección</th>
-              <th>Fecha de Nacimiento</th>
               <th>Rol</th>
               <th>Acciones</th>
           </tr>
@@ -16,13 +15,12 @@
       <tbody>
           <tr *ngFor="let usuario of usuarios">
               <td>{{ usuario.name }}</td>
-              <td>{{ usuario.email }}</td>
-              <td>{{ usuario.address }}</td>
-              <td>{{ usuario.birthdayDate | date }}</td>
-              <td>{{ usuario.role }}</td>
+              <td>{{ usuario.lastName }}</td>
+              <td>{{ usuario.email }}</td>              
+              <td>{{ usuario.rol }}</td>
               <td>
-                <button *ngIf="usuario.id" (click)="editarUsuario(usuario.id)" class="btn btn-warning">Editar</button>
-                <button *ngIf="usuario.id" (click)="eliminarUsuario(usuario.id)" class="btn btn-danger">Eliminar</button>
+                <button (click)="editarUsuario(usuario.userId)" class="btn btn-warning" *ngIf="usuario.userId">Editar</button>
+                <button (click)="eliminarUsuario(usuario.userId)" class="btn btn-danger" *ngIf="usuario.userId">Eliminar</button>
               </td>
           </tr>
       </tbody>
@@ -31,33 +29,3 @@
 
 
 
-
-
-<!-- 
-
-<div class="container">
-  <h2>Lista de Usuarios</h2>
-  <ul>
-    <li *ngFor="let usuario of usuarios">
-      <h3>{{ usuario.name }} {{ usuario.lastName }}</h3>
-      <p><strong>Documento:</strong> {{ usuario.documentNumber }}</p>
-      <p><strong>Teléfono:</strong> {{ usuario.cellPhone }}</p>
-      <p><strong>Email:</strong> {{ usuario.email }}</p>
-      <p><strong>Rol:</strong> {{ usuario.rol }}</p>
-      <h4>Proyectos Creados</h4>
-      <ul>
-        <li *ngFor="let proyecto of usuario.proyectos">
-          {{ proyecto.name }} - {{ proyecto.date | date }}
-        </li>
-      </ul>
-      <h4>Solicitudes de Inversión</h4>
-      <ul>
-        <li *ngFor="let solicitud of usuario.solicitudInversions">
-          Proyecto: {{ solicitud.proyecto.name }} - Monto: {{ solicitud.amount | currency }}
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div> -->
-
-  

@@ -1,11 +1,11 @@
 export interface Usuario {
-    id?: number; 
+    userId: number;
+    documentNumber: string; 
     name: string;
-    lastName: string;
-    documentNumber: string;
+    lastName: string;    
     cellPhone: string;
     email: string;
-    address?: string; 
-    birthdayDate?: Date; 
-    role: string;
+    rol: string;
+    //proyectos: Proyecto[];
+    //solicitudInversions: SolicitudInversion[];
   }

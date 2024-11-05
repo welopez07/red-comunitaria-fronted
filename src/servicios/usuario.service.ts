@@ -25,11 +25,16 @@ export class UsuarioService {
   editarUsuario(usuarioId: number, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.baseUrl}/${usuarioId}`, usuario);
   }
-
+  //obtener usuario por id
   obtenerUsuarioPorId(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.baseUrl}/${id}`);
   }
 
+  // Obtener usuario por documento de identificación
+  obtenerUsuarioPorDocumento(documentNumber: string): Observable<Usuario> {
+  return this.http.get<Usuario>(`${this.baseUrl}/documentNumber/${documentNumber}`);
+  }
+  
   // Eliminar un usuario
   eliminarUsuario(usuarioId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${usuarioId}`);

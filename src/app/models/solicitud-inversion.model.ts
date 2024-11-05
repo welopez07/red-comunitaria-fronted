@@ -4,14 +4,14 @@ export interface Proyecto {
   }
   
   export interface Inversionista {
-    name: string;
-    lastName: string;
+    documentNumber: string;
   }
   
   export interface SolicitudInversion {
+    id?: number;
     proyecto: Proyecto; // Incluye el proyecto relacionado
     inversionista: Inversionista;
-    amount: number;     // Monto de inversión
-    message: string;    // Mensaje del inversionista
-    date: Date;         // Fecha de la solicitud
+    message: string;
+    date: Date;
+    amount: number;
   }

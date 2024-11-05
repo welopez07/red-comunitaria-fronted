@@ -15,6 +15,6 @@ export const routes: Routes = [
     {path: 'editar-usuario/:id', component: EditarUsuarioComponent},
     {path: 'proyectos', component:ProyectosComponent},   
     {path: 'registro-proyecto', component: RegistroProyectoComponent },    
-    {path: 'solicitud-inversion/id', component: SolicitudInversionComponent},
+    {path: 'solicitud-inversion/:id', component: SolicitudInversionComponent},
 
 ];

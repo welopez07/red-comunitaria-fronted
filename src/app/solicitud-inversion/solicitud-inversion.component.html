@@ -1,47 +1,78 @@
-<div class="form-group">
-  <label for="proyecto">Selecciona un Proyecto:</label>
-  <select [(ngModel)]="solicitudInversion.proyecto" class="form-control" id="proyecto" name="proyecto">
-    <option *ngFor="let proyecto of proyectos" [ngValue]="proyecto">
-      {{ proyecto.name }}
-    </option>
-  </select>
+<div class="container" *ngIf="proyecto">
+  <h2>Solicitud de Inversión para: {{ proyecto.name }}</h2>
+  <p><strong>Categoría:</strong> {{ proyecto.category }}</p>
+  <p><strong>Fecha:</strong> {{ proyecto.date | date }}</p>
+  <p><strong>Inversión Mínima:</strong> ${{ proyecto.minInversion }}</p>
+  <p><strong>Detalles de Inversión:</strong> {{ proyecto.detailsInversion }}</p>
+  <p><strong>Estado:</strong> {{ proyecto.estado }}</p>
+
+  <!-- Bloque para mostrar el mensaje de alerta -->
+  <div class="alert alert-info" *ngIf="mostrarMensaje" role="alert">
+    {{ mensajeAlerta }}
+  </div>
+
+  <form (ngSubmit)="enviarSolicitud()" #solicitudForm="ngForm">
+    <div class="mb-3">
+      <label for="documento" class="form-label">Documento de Identificación</label>
+      <input type="text" class="form-control" id="documento" [(ngModel)]="documento" name="documento" (blur)="validarInversionista()" required>
+    </div>
+    
+    <div *ngIf="documentValidated">
+      <div *ngIf="isInversionistaValido">
+        <div class="mb-3">
+          <label for="amount" class="form-label">Monto a Invertir</label>
+          <input type="number" class="form-control" id="amount" [(ngModel)]="amount" name="amount" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="message" rows="3" [(ngModel)]="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!solicitudForm.form.valid">Enviar Solicitud</button>
+      </div>
+      <div *ngIf="!isInversionistaValido">
+        <p class="text-danger">El usuario no está registrado como inversionista. Por favor, regístrese.</p>
+      </div>
+    </div>
+  </form>
 </div>
 
-<div class="form-group">
-  <label for="amount">Monto de Inversión:</label>
-  <input type="number" id="amount" class="form-control" [(ngModel)]="solicitudInversion.amount">
-</div>
-
-<div class="form-group">
-  <label for="message">Mensaje:</label>
-  <textarea id="message" class="form-control" [(ngModel)]="solicitudInversion.message"></textarea>
-</div>
-
-<button (click)="enviarSolicitud()" class="btn btn-primary">Enviar Solicitud</button>
 
 
-<!-- <div class="form-group">
-  <label for="proyecto">Selecciona un Proyecto:</label>
-  <select [(ngModel)]="solicitudInversion.proyecto" class="form-control" id="proyecto" name="proyecto">
-    <option *ngFor="let proyecto of proyectos" [ngValue]="proyecto">
-      {{ proyecto.name }}
-    </option>
-  </select>
-</div>
+<!-- <div class="container" *ngIf="proyecto">
+  <h2>Solicitud de Inversión para: {{ proyecto.name }}</h2>
+  <p><strong>Categoría:</strong> {{ proyecto.category }}</p>
+  <p><strong>Fecha:</strong> {{ proyecto.date | date }}</p>
+  <p><strong>Inversión Mínima:</strong> ${{ proyecto.minInversion }}</p>
+  <p><strong>Detalles de Inversión:</strong> {{ proyecto.detailsInversion }}</p>
+  <p><strong>Estado:</strong> {{ proyecto.estado }}</p>
 
-<div class="form-group">
-  <label for="amount">Monto de Inversión:</label>
-  <input type="number" id="amount" class="form-control" [(ngModel)]="solicitudInversion.amount">
-</div>
+  <form (ngSubmit)="enviarSolicitud()" #solicitudForm="ngForm">
+    <div class="mb-3">
+      <label for="documento" class="form-label">Documento de Identificación</label>
+      <input type="text" class="form-control" id="documento" [(ngModel)]="documento" name="documento" (blur)="validarInversionista()" required>
+    </div>
+    
+    <div *ngIf="documentValidated">
+      <div *ngIf="isInversionistaValido">
+        <div class="mb-3">
+          <label for="amount" class="form-label">Monto a Invertir</label>
+          <input type="number" class="form-control" id="amount" [(ngModel)]="amount" name="amount" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="message" rows="3" [(ngModel)]="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!solicitudForm.form.valid">Enviar Solicitud</button>
+      </div>
+      <div *ngIf="!isInversionistaValido">
+        <p class="text-danger">El usuario no está registrado como inversionista. Por favor, regístrese.</p>
+      </div>
+    </div>
+  </form>
+</div> -->
 
-<div class="form-group">
-  <label for="message">Mensaje:</label>
-  <textarea id="message" class="form-control" [(ngModel)]="solicitudInversion.message"></textarea>
-</div>
-
-<button (click)="enviarSolicitud()" class="btn btn-primary">Enviar Solicitud</button> -->
 
 
 
 
-
+ 
